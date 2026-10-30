@@ -1,0 +1,31 @@
+{
+  "planes": {
+    "XY": {
+      "su": 1,
+      "sv": 1,
+      "sn": 1,
+      "so": 1,
+      "sc": -1,
+      "swap": 0
+    },
+    "XZ": {
+      "su": 1,
+      "sv": -1,
+      "sn": 1,
+      "so": 1,
+      "sc": -1,
+      "swap": 0
+    },
+    "YZ": {
+      "su": -1,
+      "sv": -1,
+      "sn": -1,
+      "so": -1,
+      "sc": -1,
+      "swap": 1
+    }
+  },
+  "volume_scale": 999.9999999999998,
+  "frame_how": "angle",
+  "draft_flip": true
+}

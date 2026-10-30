@@ -1,0 +1,5 @@
+numpy
+openai>=1.30
+pyyaml
+python-dotenv
+pywin32; sys_platform == "win32"

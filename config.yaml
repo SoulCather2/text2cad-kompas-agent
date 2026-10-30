@@ -1,0 +1,43 @@
+# Модель переключается здесь (или флагом --model), код править не нужно.
+llm:
+  provider: aitunnel                 # ключ из списка providers ниже
+  model: deepseek-v4.1-flash-1017    # модель по умолчанию
+  n_samples: 5                       # вариантов на задание (голосование)
+  parallel: 5
+  temperature_main: 0.0
+  temperature_vote: 0.7
+  temperature_repair: 0.3
+  max_repair_rounds: 2
+  max_tokens: 8000
+  json_mode: true
+  timeout: 90
+  max_retries: 2
+
+# Мультиагентный режим: аналитик → конструктор → контролёр (с обратной связью).
+# Выключить: enabled: false  или флаг  --single
+multiagent:
+  enabled: true
+  max_rounds: 3          # раундов конструктор ↔ контролёр
+  analyst: true          # агент 1 (проверка задания)
+  strict: true           # отклонять неполные/противоречивые задания (false или --lenient — строить с допущениями)
+  max_questions: 2       # сколько раз аналитик может задать вопросы в консоли
+  inspector: true        # агент 3 (проверка результата моделью; false — только по фактам)
+  analyst_model:         # пусто — та же модель, что у конструктора
+  inspector_model:
+
+providers:
+  aitunnel:
+    base_url: https://api.aitunnel.ru/v1/
+    api_key_env: AITUNNEL_API_KEY
+  yandex:                            # OpenAI-совместимый endpoint Yandex Cloud
+    base_url: https://llm.api.cloud.yandex.net/v1
+    api_key_env: YANDEX_API_KEY
+    # модель указывайте как gpt://<folder_id>/yandexgpt/latest
+
+privacy:
+  mode: redact          # redact — заменить и отправить; block — не отправлять
+  replacement: деталь
+  banned_terms_file: banned_terms.txt   # основы слов по одной в строке; файл НЕ коммитится
+  banned_terms: []      # можно дописать и сюда, но config.yaml лежит в публичном репозитории
+
+log_file: logs/requests.jsonl

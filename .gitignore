@@ -1,0 +1,25 @@
+# секреты
+.env
+
+# результаты и журналы
+logs/
+out/
+out_*/
+*.m3d
+*.cdw
+*.bak
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# разовые диагностические скрипты (не нужны для запуска)
+drawing_diag.py
+kompas_diag.py
+kompas_fixdiag.py
+kompas_rotdiag.py
+
+# список обезличивания (локальный)
+banned_terms.txt
